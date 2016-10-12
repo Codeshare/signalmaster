@@ -1,4 +1,5 @@
 {
+    "esnext": true,
     "asi": false,
     "expr": true,
     "loopfunc": true,
@@ -20,6 +21,7 @@
         "exports",
         "console",
         "Buffer",
-        "module"
+        "module",
+        "Promise"
     ]
 }
