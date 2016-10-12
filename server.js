@@ -1,14 +1,24 @@
 var co = require('co');
 var timeout = require('timeout-then');
 /*global console*/
+var healthStr = JSON.stringify({
+    version: require('./package.json').version,
+    status: 200
+});
 var yetify = require('yetify'),
     config = require('getconfig'),
     fs = require('fs'),
     sockets = require('./sockets'),
     port = parseInt(process.env.PORT || config.server.port, 10),
     server_handler = function (req, res) {
-        res.writeHead(404);
-        res.end();
+        if (req.url === '/~health') {
+            res.writeHead(200);
+            res.write(healthStr);
+            res.end();
+        } else {
+            res.writeHead(404);
+            res.end();
+        }
     },
     server = null;
 
