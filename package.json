@@ -1,7 +1,7 @@
 {
   "name": "signal-master",
   "description": "Simple signaling server for SimpleWebRTC",
-  "version": "1.2.1-codeshare",
+  "version": "1.2.2-codeshare",
   "dependencies": {
     "co": "^4.6.0",
     "getconfig": "2.1.0",
