@@ -11,9 +11,17 @@ var yetify = require('yetify'),
     sockets = require('./sockets'),
     port = parseInt(process.env.PORT || config.server.port, 10),
     server_handler = function (req, res) {
-        if (req.url === '/~health') {
+        if (/^\/~health/.test(req.url)) {
             res.writeHead(200);
             res.write(healthStr);
+            res.end();
+        } else if (/^\/robots\.txt$/.test(this.url)) {
+            var disallowAll = [
+                'User-agent: *',
+                'Disallow: /'
+            ].join('\n');
+            res.writeHead(200);
+            res.write(disallowAll);
             res.end();
         } else {
             res.writeHead(404);
